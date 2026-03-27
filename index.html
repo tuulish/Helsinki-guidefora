@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Helsinki · Juhannus — Midnight Sun Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── BIRCH + RHUBARB PALETTE ──
+     Beige:      #E8E0CC
+     Sage:       #7A9E74
+     Rhubarb:    #C45C78
+     Sky:        #7AB8D4
+     Steel teal: #3A6E82
+     Off-white:  #F7F3EC
+     Dark text:  #2C2820
+  */
+
+  :root {
+    --beige: #E8E0CC;
+    --sage: #7A9E74;
+    --rhubarb: #C45C78;
+    --sky: #7AB8D4;
+    --teal: #3A6E82;
+    --offwhite: #F7F3EC;
+    --dark: #2C2820;
+    --warm-bg: #EDE8DF;
+    --border: #D8D0BC;
+    --muted: #6A6050;
+    --light-border: #E8E0CC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-bg);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── STRIPE ── */
+  .stripe {
+    height: 4px;
+    background: linear-gradient(to right, #E8E0CC 20%, #7A9E74 20% 40%, #C45C78 40% 60%, #7AB8D4 60% 80%, #3A6E82 80%);
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--offwhite);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--teal);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+  }
+  .nav-logo span { color: var(--rhubarb); font-style: italic; }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-links a.active { color: var(--rhubarb); }
+
+  .nav-ref {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #A09880;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 92vh;
+    min-height: 600px;
+    overflow: hidden;
+    background: var(--teal);
+  }
+
+  .hero-slides {
+    position: absolute;
+    inset: 0;
+    display: flex;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+  .hero-slide.active { opacity: 1; }
+
+  .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 50%;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(44,40,32,0.1) 0%,
+      rgba(44,40,32,0) 30%,
+      rgba(44,40,32,0.6) 100%
+    );
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 64px 80px;
+    z-index: 3;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #C8E4EE;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .hero-eyebrow span {
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: rgba(200,228,238,0.5);
+    vertical-align: middle;
+    margin-right: 14px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 100px);
+    font-weight: 400;
+    color: var(--offwhite);
+    line-height: 0.95;
+    text-shadow: 0 4px 32px rgba(44,40,32,0.3);
+    margin-bottom: 24px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: #E8D4BA;
+    display: block;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 36px;
+  }
+
+  .hero-date {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #C8D8E0;
+    font-weight: 400;
+  }
+
+  .hero-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--rhubarb);
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--rhubarb);
+    color: var(--offwhite);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    padding: 16px 44px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .hero-cta:hover {
+    background: #A84864;
+    transform: translateY(-2px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    right: 48px;
+    bottom: 48px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.6;
+  }
+  .hero-scroll-text {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    writing-mode: vertical-lr;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 48px;
+    background: rgba(247,243,236,0.4);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+  }
+
+  .slide-dots {
+    position: absolute;
+    bottom: 32px;
+    left: 80px;
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+  }
+  .slide-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(247,243,236,0.35);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .slide-dot.active { background: var(--offwhite); }
+
+  /* ── INTRO SECTION ── */
+  .intro-section {
+    background: var(--offwhite);
+    padding: 80px 80px 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .intro-left {}
+
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--light-border);
+  }
+
+  .intro-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 28px;
+  }
+  .intro-title em {
+    font-style: italic;
+    color: var(--rhubarb);
+  }
+
+  .intro-body {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #4A4438;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .intro-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .journey-stat {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    background: var(--warm-bg);
+    border-left: 2px solid var(--beige);
+  }
+  .journey-stat-icon { font-size: 24px; }
+  .journey-stat-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #A09880;
+    margin-bottom: 3px;
+  }
+  .journey-stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--dark);
+  }
+
+  /* ── PHOTO GRID ── */
+  .photo-section {
+    padding: 72px 80px;
+    background: var(--warm-bg);
+  }
+
+  .photo-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 280px 220px;
+    gap: 12px;
+  }
+
+  .photo-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--beige);
+  }
+  .photo-card:first-child {
+    grid-row: 1 / 3;
+  }
+
+  .photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+  .photo-card:hover img { transform: scale(1.04); }
+
+  .photo-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 16px;
+    background: linear-gradient(transparent, rgba(44,40,32,0.7));
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(247,243,236,0.9);
+    font-weight: 400;
+  }
+
+  /* ── HIGHLIGHTS / CATEGORIES ── */
+  .highlights-section {
+    background: var(--offwhite);
+    padding: 72px 80px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+
+  .highlight-card {
+    background: var(--warm-bg);
+    padding: 36px 28px 32px;
+    text-decoration: none;
+    color: var(--dark);
+    display: block;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--beige);
+    transition: background 0.25s;
+  }
+  .highlight-card:hover { background: var(--offwhite); }
+  .highlight-card:hover::after { background: var(--rhubarb); }
+
+  .highlight-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .highlight-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #A09880;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .highlight-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .highlight-desc {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .highlight-arrow {
+    margin-top: 20px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--teal);
+    font-weight: 400;
+  }
+
+  /* Second row of highlights */
+  .highlights-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 2px;
+  }
+
+  /* ── DAYS SECTION ── */
+  .days-section {
+    padding: 72px 80px;
+    background: var(--warm-bg);
+  }
+
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+
+  .day-card {
+    background: var(--offwhite);
+    padding: 32px 24px;
+    border-top: 2px solid var(--beige);
+  }
+
+  .day-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--beige);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .day-date-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .day-title-card {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--dark);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .day-desc-card {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .day-tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+  }
+  .tag-arrive { background: #EAF3E8; color: #5A8054; border: 1px solid #C8DCC4; }
+  .tag-explore { background: #E8F0F8; color: var(--teal); border: 1px solid #B8D0E0; }
+  .tag-farewell { background: #F0EDE4; color: #8A7A60; border: 1px solid #D8D0BC; }
+
+  /* ── SURPRISE BOX ── */
+  .surprise-section {
+    background: var(--teal);
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .surprise-section::before {
+    content: '✦';
+    position: absolute;
+    right: -20px;
+    top: -30px;
+    font-size: 220px;
+    color: rgba(255,255,255,0.03);
+    font-family: serif;
+  }
+  .surprise-inner {
+    max-width: 560px;
+    position: relative;
+    z-index: 1;
+  }
+  .surprise-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sky);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .surprise-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--offwhite);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .surprise-body {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #A8C8D4;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+  .surprise-hint {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(122,184,212,0.2);
+  }
+  .hint-dots { display: flex; gap: 6px; }
+  .hint-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .hint-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--sky);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--beige);
+    letter-spacing: 0.08em;
+  }
+  .footer-logo span { color: var(--rhubarb); font-style: italic; }
+  .footer-right {
+    font-size: 10px;
+    color: #6A6050;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 2;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1.15;
+  }
+  .section-title em { font-style: italic; color: var(--rhubarb); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 40px 32px; }
+    .intro-section { grid-template-columns: 1fr; padding: 48px 32px; gap: 40px; }
+    .photo-section { padding: 48px 24px; }
+    .photo-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .photo-card { height: 220px; }
+    .photo-card:first-child { grid-row: auto; }
+    .highlights-section { padding: 48px 24px; }
+    .highlights-grid { grid-template-columns: 1fr 1fr; }
+    .highlights-grid-2 { grid-template-columns: 1fr 1fr; }
+    .days-section { padding: 48px 24px; }
+    .days-grid { grid-template-columns: 1fr 1fr; }
+    .surprise-section { padding: 48px 24px; }
+    footer { padding: 24px 32px; }
+    .slide-dots { left: 32px; }
+    .hero-scroll { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stripe"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Midnight <span>Sun</span></a>
+  <ul class="nav-links">
+    <li><a href="harbour.html">Harbour & Islands</a></li>
+    <li><a href="cafes.html">Café Culture</a></li>
+    <li><a href="markets.html">Markets</a></li>
+    <li><a href="sights.html">Sights</a></li>
+    <li><a href="shopping.html">Shopping</a></li>
+  </ul>
+  <div class="nav-ref">Ref. HEL–2803–ARIES</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Helsinki_Cathedral_and_the_Market_Square.jpg/1280px-Helsinki_Cathedral_and_the_Market_Square.jpg" alt="Helsinki Cathedral" onerror="this.parentElement.style.background='#3A6E82'">
+    </div>
+    <div class="hero-slide">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Helsinki_Senate_Square.JPG/1280px-Helsinki_Senate_Square.JPG" alt="Senate Square" onerror="this.parentElement.style.background='#3A6E82'">
+    </div>
+    <div class="hero-slide">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Esplanadi_Park_Helsinki.jpg/1280px-Esplanadi_Park_Helsinki.jpg" alt="Esplanadi" onerror="this.parentElement.style.background='#7A9E74'">
+    </div>
+  </div>
+
+  <div class="hero-gradient"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span></span>A private journey · Juhannus 2025</div>
+    <div class="hero-title">
+      Helsinki,
+      <em>Juhannus.</em>
+    </div>
+    <div class="hero-meta">
+      <span class="hero-date">21 June</span>
+      <span class="hero-dot"></span>
+      <span class="hero-date">24 June 2025</span>
+      <span class="hero-dot"></span>
+      <span class="hero-date">Finland</span>
+    </div>
+    <a href="harbour.html" class="hero-cta">Explore the Guide →</a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <div class="hero-scroll-text">Scroll</div>
+  </div>
+
+  <div class="slide-dots">
+    <div class="slide-dot active" onclick="goSlide(0)"></div>
+    <div class="slide-dot" onclick="goSlide(1)"></div>
+    <div class="slide-dot" onclick="goSlide(2)"></div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro-section">
+  <div class="intro-left">
+    <div class="section-eyebrow">A little something for you</div>
+    <div class="intro-title">Three days.<br>One city.<br><em>Infinite summer.</em></div>
+    <p class="intro-body">
+      On behalf of your most dedicated travel curator — someone who has been planning this experience for quite some time — welcome to your private guide to Helsinki, Finland.
+    </p>
+    <p class="intro-body">
+      The Baltic glittering at your feet, a market square full of stomach goodies, cafés that feel like home, and a city that somehow feels both grand and wonderfully human. Everything has been arranged with care.
+    </p>
+    <p class="intro-body">
+      Below you'll find inspirations, ideas, and curated impressions — it will grow as the date approaches. Some things are planned, some are suggestions for how the mood and vibe of each day might take you.
+    </p>
+  </div>
+  <div class="intro-right">
+    <div class="journey-stat">
+      <div class="journey-stat-icon">🗓️</div>
+      <div>
+        <div class="journey-stat-label">Arrival</div>
+        <div class="journey-stat-val">21 June, Sunday</div>
+      </div>
+    </div>
+    <div class="journey-stat">
+      <div class="journey-stat-icon">🌅</div>
+      <div>
+        <div class="journey-stat-label">Duration</div>
+        <div class="journey-stat-val">3 nights</div>
+      </div>
+    </div>
+    <div class="journey-stat">
+      <div class="journey-stat-icon">📍</div>
+      <div>
+        <div class="journey-stat-label">City</div>
+        <div class="journey-stat-val">Helsinki, Finland</div>
+      </div>
+    </div>
+    <div class="journey-stat">
+      <div class="journey-stat-icon">☀️</div>
+      <div>
+        <div class="journey-stat-label">Occasion</div>
+        <div class="journey-stat-val">Juhannus · Midsummer</div>
+      </div>
+    </div>
+    <div class="journey-stat">
+      <div class="journey-stat-icon">🎂</div>
+      <div>
+        <div class="journey-stat-label">Curated for</div>
+        <div class="journey-stat-val">Your Birthday, Anna</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO GRID -->
+<div class="photo-section">
+  <div class="photo-section-header">
+    <div>
+      <div class="section-eyebrow">Helsinki</div>
+      <div class="section-title">The city, <em>in frames</em></div>
+    </div>
+  </div>
+  <div class="photo-grid">
+    <div class="photo-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Helsinki_-_Market_Square_-_20180809094127.jpg/1280px-Helsinki_-_Market_Square_-_20180809094127.jpg" alt="Helsinki Market Square" onerror="this.style.display='none'; this.parentElement.style.background='#7AB8D4'">
+      <div class="photo-label">Market Square · Kauppatori</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Uspenski_Cathedral_in_Helsinki.jpg/800px-Uspenski_Cathedral_in_Helsinki.jpg" alt="Uspenski Cathedral" onerror="this.style.display='none'; this.parentElement.style.background='#C45C78'">
+      <div class="photo-label">Uspenski Cathedral</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Helsinki_Cathedral_2.JPG/800px-Helsinki_Cathedral_2.JPG" alt="Helsinki Cathedral" onerror="this.style.display='none'; this.parentElement.style.background='#E8E0CC'">
+      <div class="photo-label">Helsinki Cathedral</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Kamppi_Chapel_Helsinki_2012.jpg/800px-Kamppi_Chapel_Helsinki_2012.jpg" alt="Kamppi Chapel" onerror="this.style.display='none'; this.parentElement.style.background='#7A9E74'">
+      <div class="photo-label">Kamppi Chapel of Silence</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Hietaranta_beach_Helsinki.jpg/800px-Hietaranta_beach_Helsinki.jpg" alt="Helsinki Beach" onerror="this.style.display='none'; this.parentElement.style.background='#3A6E82'">
+      <div class="photo-label">Hietaniemi Beach</div>
+    </div>
+  </div>
+</div>
+
+<!-- HIGHLIGHTS / CATEGORY LINKS -->
+<div class="highlights-section">
+  <div class="section-eyebrow">Things to look forward to</div>
+  <div class="section-title">Your Helsinki, <em>curated</em></div>
+
+  <div class="highlights-grid">
+    <a href="harbour.html" class="highlight-card">
+      <span class="highlight-icon">⛵</span>
+      <div class="highlight-label">On the water</div>
+      <div class="highlight-title">Harbour & Islands</div>
+      <div class="highlight-desc">The sea is never far. Ferries, archipelago islands, and harbour life — Helsinki from its most beautiful angle.</div>
+      <div class="highlight-arrow">Explore →</div>
+    </a>
+    <a href="cafes.html" class="highlight-card">
+      <span class="highlight-icon">☕</span>
+      <div class="highlight-label">Slow mornings</div>
+      <div class="highlight-title">Café Culture</div>
+      <div class="highlight-desc">Helsinki takes its coffee seriously. From Nordic third-wave roasters to century-old patisseries.</div>
+      <div class="highlight-arrow">Explore →</div>
+    </a>
+    <a href="greenery.html" class="highlight-card">
+      <span class="highlight-icon">🌿</span>
+      <div class="highlight-label">Breathe</div>
+      <div class="highlight-title">Parks & Greenery</div>
+      <div class="highlight-desc">In June the city turns impossibly green. Esplanadi, Kaivopuisto, Töölönlahti — places to just be.</div>
+      <div class="highlight-arrow">Explore →</div>
+    </a>
+    <a href="markets.html" class="highlight-card">
+      <span class="highlight-icon">🐟</span>
+      <div class="highlight-label">Taste</div>
+      <div class="highlight-title">Markets</div>
+      <div class="highlight-desc">Strawberries, smoked fish, cardamom buns, pickled things. The market square is a sensory overload — in the best way.</div>
+      <div class="highlight-arrow">Explore →</div>
+    </a>
+  </div>
+  <div class="highlights-grid-2">
+    <a href="sights.html" class="highlight-card">
+      <span class="highlight-icon">🏛️</span>
+      <div class="highlight-label">See</div>
+      <div class="highlight-title">Sights</div>
+      <div class="highlight-desc">The cathedral on the hill, the Russian orthodox jewel, the rock church. Helsinki's icons, up close.</div>
+      <div class="highlight-arrow">Explore →</div>
+    </a>
+    <a href="shopping.html" class="highlight-card">
+      <span class="highlight-icon">🛍️</span>
+      <div class="highlight-label">Finds</div>
+      <div class="highlight-title">Retail Therapy</div>
+      <div class="highlight-desc">Marimekko, Iittala, tiny design shops, and concept stores in Punavuori. Bring a bigger bag.</div>
+      <div class="highlight-arrow">Explore →</div>
+    </a>
+    <a href="berries.html" class="highlight-card">
+      <span class="highlight-icon">🫐</span>
+      <div class="highlight-label">Nordic life</div>
+      <div class="highlight-title">Finnish Berries for Life</div>
+      <div class="highlight-desc">Wild blueberries, lingonberries, cloudberries. In June they begin. And once you taste a Finnish berry, there's no going back.</div>
+      <div class="highlight-arrow">Explore →</div>
+    </a>
+    <a href="surprise.html" class="highlight-card" style="background: #F8EAF0; border-bottom: 2px solid #E8C0CC;">
+      <span class="highlight-icon" style="font-family:'Playfair Display',serif; font-style:italic; color: var(--rhubarb); font-size:22px;">✦</span>
+      <div class="highlight-label" style="color: #C45C78;">For you</div>
+      <div class="highlight-title">A Little Something</div>
+      <div class="highlight-desc">One gift. Chosen with you in mind. Something deeply Finnish and worth dressing up for. Consider this your only clue.</div>
+      <div class="highlight-arrow" style="color: var(--rhubarb);">Peek inside →</div>
+    </a>
+  </div>
+</div>
+
+<!-- DAYS -->
+<div class="days-section">
+  <div class="section-eyebrow">Your journey, day by day</div>
+  <div class="section-title">Four days in <em>Helsinki</em></div>
+  <div class="days-grid">
+    <div class="day-card">
+      <div class="day-num">1</div>
+      <div class="day-date-label">Sunday · 21 June</div>
+      <div class="day-title-card">Arrival & Into the City</div>
+      <div class="day-desc-card">Touch down in Helsinki, check in, and let the city wash over you. Stroll the streets, get a feel for the place, have a drink, feel the Juhannus air.</div>
+      <span class="day-tag tag-arrive">Arrival Day</span>
+    </div>
+    <div class="day-card">
+      <div class="day-num">2</div>
+      <div class="day-date-label">Monday · 22 June</div>
+      <div class="day-title-card">The City Is Ours</div>
+      <div class="day-desc-card">A full day to move through Helsinki at our own pace. No set agenda — just the kind of morning that turns into afternoon without you noticing.</div>
+      <span class="day-tag tag-explore">Explore</span>
+    </div>
+    <div class="day-card">
+      <div class="day-num">3</div>
+      <div class="day-date-label">Tuesday · 23 June</div>
+      <div class="day-title-card">A Different Side of the City ✦</div>
+      <div class="day-desc-card">Same city, new streets. Helsinki has more layers than one day can hold. There's always another feeling waiting one neighbourhood over.</div>
+      <span class="day-tag tag-explore">Explore</span>
+    </div>
+    <div class="day-card">
+      <div class="day-num">4</div>
+      <div class="day-date-label">Wednesday · 24 June</div>
+      <div class="day-title-card">One Last Morning</div>
+      <div class="day-desc-card">A quick grab and go while making our way to the airport. Maybe something sweet from the market. The best trips always end way too soon.</div>
+      <span class="day-tag tag-farewell">Departure</span>
+    </div>
+  </div>
+</div>
+
+<!-- SURPRISE -->
+<div class="surprise-section">
+  <div class="surprise-inner">
+    <div class="surprise-eyebrow">✦ A little something is waiting</div>
+    <div class="surprise-title">Something deeply Finnish<br>is on the table.</div>
+    <div class="surprise-body">
+      One gift — chosen with you in mind — is waiting somewhere in your itinerary. Something worth dressing up for. Consider this your only clue.
+    </div>
+    <div class="surprise-hint">
+      <div class="hint-dots">
+        <div class="hint-dot" style="background:#C45C78"></div>
+        <div class="hint-dot" style="background:#7A9E74"></div>
+        <div class="hint-dot" style="background:#7AB8D4"></div>
+      </div>
+      <div class="hint-text">More details will appear as your journey approaches.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Midnight <span>Sun</span> Travel</div>
+  <div class="footer-right">Helsinki · June 2025<br>A private journey · Ref. HEL–2803–ARIES</div>
+</footer>
+<div class="stripe"></div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.slide-dot');
+
+  function goSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  setInterval(() => {
+    goSlide((current + 1) % slides.length);
+  }, 5000);
+</script>
+</body>
+</html>

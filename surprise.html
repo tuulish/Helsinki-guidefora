@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something · Helsinki Guide</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+  .surprise-hero {
+    background: #3A6E82;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .surprise-hero::before {
+    content: '✦';
+    position: absolute;
+    font-size: 400px;
+    color: rgba(255,255,255,0.03);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .surprise-hero-inner {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 80px 40px;
+    animation: fadeUp 1s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .surprise-breadcrumb {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(200,228,238,0.6);
+    margin-bottom: 24px;
+  }
+  .surprise-breadcrumb a { color: inherit; text-decoration: none; }
+  .surprise-star {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 80px;
+    color: #C45C78;
+    line-height: 1;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .surprise-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 400;
+    font-style: italic;
+    color: #F7F3EC;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .surprise-hero-sub {
+    font-size: 14px;
+    color: rgba(168,200,212,0.8);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+  }
+
+  .clue-section {
+    background: #F7F3EC;
+    padding: 80px 120px;
+    text-align: center;
+    border-bottom: 1px solid #D8D0BC;
+  }
+  .clue-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #C45C78;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .clue-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #2C2820;
+    line-height: 1.15;
+    margin-bottom: 32px;
+  }
+  .clue-title em { font-style: italic; color: #C45C78; }
+  .clue-body {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #4A4438;
+    font-weight: 300;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .clue-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .clue-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .clue-hint-box {
+    background: #2C2820;
+    color: #F7F3EC;
+    padding: 32px 48px;
+    max-width: 480px;
+    margin: 0 auto;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.6;
+    position: relative;
+  }
+  .clue-hint-box::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    font-size: 60px;
+    color: #C45C78;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+
+  .coming-section {
+    background: #EDE8DF;
+    padding: 72px 120px;
+    text-align: center;
+  }
+  .coming-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: #2C2820;
+    margin-bottom: 16px;
+  }
+  .coming-body {
+    font-size: 14px;
+    color: #6A6050;
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .lock-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.4;
+  }
+
+  @media (max-width: 900px) {
+    .clue-section { padding: 48px 28px; }
+    .coming-section { padding: 48px 28px; }
+    .clue-hint-box { padding: 28px 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Midnight <span>Sun</span></a>
+  <ul class="nav-links">
+    <li><a href="harbour.html">Harbour & Islands</a></li>
+    <li><a href="cafes.html">Cafés</a></li>
+    <li><a href="markets.html">Markets</a></li>
+    <li><a href="sights.html">Sights</a></li>
+    <li><a href="shopping.html">Shopping</a></li>
+  </ul>
+  <div class="nav-back">← <a href="index.html" style="color:inherit;text-decoration:none;">Back to Guide</a></div>
+</nav>
+
+<div class="surprise-hero">
+  <div class="surprise-hero-inner">
+    <div class="surprise-breadcrumb"><a href="index.html">Guide</a> · A Little Something</div>
+    <span class="surprise-star">✦</span>
+    <div class="surprise-hero-title">Something deeply Finnish<br>is on the table.</div>
+    <div class="surprise-hero-sub">One gift. Chosen with you in mind.</div>
+  </div>
+</div>
+
+<div class="clue-section">
+  <div class="clue-eyebrow">Your only clue</div>
+  <div class="clue-title">Worth <em>dressing up</em> for.</div>
+  <p class="clue-body">
+    Somewhere in the itinerary, a gift is waiting. It was chosen a long time ago, with you specifically in mind. Something that could only be this, in this city, on this trip.
+  </p>
+  <p class="clue-body">
+    Consider this page your only clue. Read it carefully.
+  </p>
+
+  <div class="clue-dots">
+    <div class="clue-dot" style="background:#C45C78"></div>
+    <div class="clue-dot" style="background:#7A9E74"></div>
+    <div class="clue-dot" style="background:#7AB8D4"></div>
+  </div>
+
+  <div class="clue-hint-box">
+    Something deeply Finnish is on the table. And it is worth dressing up for.
+  </div>
+</div>
+
+<div class="coming-section">
+  <span class="lock-icon">🔒</span>
+  <div class="coming-title">More will be revealed.</div>
+  <p class="coming-body">
+    This page will be updated as your journey approaches. A detail here, a hint there. Check back as June gets closer.
+  </p>
+  <br>
+  <p class="coming-body" style="font-family:'Playfair Display',serif; font-style:italic; font-size:16px; color:#2C2820;">
+    For now — that's all you get.
+  </p>
+</div>
+
+<div class="nav-bottom">
+  <a href="berries.html" class="nav-bottom-link">← Finnish Berries</a>
+  <a href="index.html" class="nav-bottom-link">Back to Guide →</a>
+</div>
+
+<footer>
+  <div class="footer-logo">Midnight <span>Sun</span> Travel</div>
+  <div class="footer-right">Helsinki · June 2025<br>A private journey</div>
+</footer>
+<div class="stripe"></div>
+</body>
+</html>
