@@ -349,7 +349,7 @@
       Wishing you the most beautiful Juhannus in Helsinki.<br>
       Toivotavasti sinulla on ihana aika Suomessa.
     </div>
-    <button class="bday-btn" onclick="closeBirthday()" aria-label="Open your guide"></button>
+    <button class="bday-btn" onclick="burstConfetti()" aria-label="Confetti"></button>
   </div>
 </div>
 
@@ -489,16 +489,25 @@
   animate();
 
   // ── CLOSE BIRTHDAY OVERLAY ──
-  function closeBirthday() {
+ function closeBirthday() {
     const overlay = document.getElementById('birthday-overlay');
     overlay.style.transition = 'opacity 0.4s ease';
     overlay.style.opacity = '0';
     setTimeout(() => {
       overlay.style.display = 'none';
-      // Let confetti fade after closing
-      setTimeout(() => { animRunning = false; }, 3000);
     }, 400);
   }
+  function burstConfetti() {
+  animRunning = true;
+  for (let i = 0; i < 120; i++) {
+    const p = spawnPiece();
+    p.x = canvas.width / 2 + randomBetween(-80, 80);
+    p.y = randomBetween(-10, 50);
+    p.speed = randomBetween(3, 7);
+    pieces.push(p);
+  }
+  animate();
+}
 
   // Also close on overlay background click
   document.getElementById('birthday-overlay').addEventListener('click', function(e) {
