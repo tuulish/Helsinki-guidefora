@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sights · Helsinki Guide</title>
 <link rel="stylesheet" href="shared.css">
+<style>
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .place-card { background: var(--offwhite); overflow: hidden; display: flex; flex-direction: column; }
+  .place-card-img { height: 210px; overflow: hidden; position: relative; background: var(--beige); }
+  .place-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  .place-card:hover .place-card-img img { transform: scale(1.05); }
+  .coming-soon-overlay { position: absolute; inset: 0; background: rgba(247,243,236,0.94); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .coming-soon-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: #A09880; }
+  .coming-soon-sub { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #C0B8A8; }
+  .place-card-body { padding: 22px 22px 26px; flex: 1; display: flex; flex-direction: column; }
+  .place-type { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #A09880; font-weight: 500; margin-bottom: 5px; }
+  .place-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--dark); margin-bottom: 9px; line-height: 1.2; }
+  .place-desc { font-size: 13px; line-height: 1.75; color: var(--muted); font-weight: 300; flex: 1; }
+  .place-detail { margin-top: 12px; font-size: 11px; color: #A09880; }
+  .place-tag { display: inline-block; margin-top: 14px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; align-self: flex-start; }
+  .tag-must { background: #F8EAF0; color: #C45C78; border: 1px solid #E8C0CC; }
+  .tag-hidden { background: #EAF3E8; color: #5A8054; border: 1px solid #C8DCC4; }
+  .tag-anna { background: #E8F0F8; color: var(--teal); border: 1px solid #B8D0E0; }
+  .tag-soon { background: #F0EDE4; color: #8A7A60; border: 1px solid #D8D0BC; }
+  @media (max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } .cards-section { padding: 32px 16px; } }
+</style>
 </head>
 <body>
 <div class="stripe"></div>
@@ -12,7 +33,7 @@
   <a href="index.html" class="nav-logo">Midnight <span>Sun</span></a>
   <ul class="nav-links">
     <li><a href="harbour.html">Harbour & Islands</a></li>
-    <li><a href="cafes.html">Cafés</a></li>
+    <li><a href="cafes.html">Food</a></li>
     <li><a href="markets.html">Markets</a></li>
     <li><a href="sights.html" class="active">Sights</a></li>
     <li><a href="shopping.html">Shopping</a></li>
@@ -21,7 +42,7 @@
 </nav>
 
 <div class="page-hero" style="background: #2C2820;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Helsinki_Cathedral_2.JPG/1280px-Helsinki_Cathedral_2.JPG" alt="Helsinki Cathedral" onerror="this.style.display='none'">
+  <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1400&q=80" alt="Helsinki Cathedral" onerror="this.style.display='none'">
   <div class="page-hero-gradient"></div>
   <div class="page-hero-content">
     <div class="page-breadcrumb"><a href="index.html">Guide</a> · Sights</div>
@@ -33,12 +54,8 @@
 <div class="page-intro">
   <div class="section-eyebrow">See</div>
   <div class="page-intro-title">Helsinki is full<br>of <em>surprises.</em></div>
-  <p class="intro-body">
-    The city isn't a place of overwhelming monuments — it works differently. The neoclassical cathedral on its hilltop square. The Russian Orthodox church glowing red on a rise above the harbour. A church literally carved into the bedrock of the city. These are not things you just walk past.
-  </p>
-  <p class="intro-body">
-    Helsinki's architecture is a conversation between empires and eras — and in June, with the light lasting almost all night, everything looks a little more beautiful than it has any right to.
-  </p>
+  <p class="intro-body">The city isn't a place of overwhelming monuments — it works differently. The neoclassical cathedral on its hilltop square. The Russian Orthodox church glowing red above the harbour. A church carved directly into the bedrock. These are not things you just walk past.</p>
+  <p class="intro-body">Helsinki's architecture is a conversation between empires and eras — and in June, with the light lasting almost all night, everything looks a little more beautiful than it has any right to.</p>
 </div>
 
 <div class="cards-section">
@@ -53,80 +70,95 @@
   </div>
 
   <div class="cards-grid">
-    <div class="place-card">
-      <div class="place-card-img">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Helsinki_Cathedral_2.JPG/800px-Helsinki_Cathedral_2.JPG" alt="Helsinki Cathedral" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="place-card-img-fallback" style="display:none; background:#E8E0CC;">🕍</div>
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Neoclassical · Senate Square</div>
-        <div class="place-name">Helsinki Cathedral</div>
-        <div class="place-desc">The great white cathedral at the top of Senate Square — Helsinki's most iconic image. Built in the 1850s, its green dome visible from the harbour. Walk up the broad stairs, look across the square, look back at the sea. This is the heart of the city. Simple, majestic, worth every visit.</div>
-        <span class="place-tag tag-must">Icon</span>
-      </div>
-    </div>
 
+    <!-- 1. Temppeliaukio -->
     <div class="place-card">
       <div class="place-card-img">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Uspenski_Cathedral_in_Helsinki.jpg/800px-Uspenski_Cathedral_in_Helsinki.jpg" alt="Uspenski Cathedral" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="place-card-img-fallback" style="display:none; background:#C45C78;">⛪</div>
+        <img src="https://images.unsplash.com/photo-1509099863731-ef4bff19e808?w=800&q=80" alt="Temppeliaukio Church" onerror="this.style.display='none'; this.parentElement.style.background:#7A9E74">
       </div>
       <div class="place-card-body">
-        <div class="place-type">Orthodox · Katajanokka</div>
-        <div class="place-name">Uspenski Cathedral</div>
-        <div class="place-desc">Red brick and golden onion domes, the largest Orthodox cathedral in Western Europe. Sitting above the harbour on a small rocky hill, it's dramatic from every angle. Inside: gold icons, candlelight, incense. Something of old Russia preserved in this Northern city. Quiet and remarkable.</div>
-        <span class="place-tag tag-anna">Anna will love this</span>
-      </div>
-    </div>
-
-    <div class="place-card">
-      <div class="place-card-img">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Kamppi_Chapel_Helsinki_2012.jpg/800px-Kamppi_Chapel_Helsinki_2012.jpg" alt="Temppeliaukio Church" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="place-card-img-fallback" style="display:none; background:#7A9E74;">🪨</div>
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Modernist · Töölö</div>
+        <div class="place-type">Modernist · Blasted from Rock · Töölö</div>
         <div class="place-name">Temppeliaukio Church</div>
-        <div class="place-desc">The Rock Church — blasted directly into the granite bedrock of the city, with a copper-wire ceiling that lets in daylight. One of Finland's most visited sites, and one of its most genuinely extraordinary. The acoustics are legendary; concerts are held here. Even if you skip it, you should go.</div>
+        <div class="place-desc">The Rock Church — blasted directly into the granite bedrock of the city, with a copper-wire ceiling that lets daylight pour in. One of Finland's most visited sites, and genuinely one of its most extraordinary. The acoustics are legendary; concerts are held here. Odd, beautiful, very Finnish. Even if you're not religious — go. You'll remember it.</div>
+        <div class="place-detail">📍 Lutherinkatu 3 · Töölö</div>
         <span class="place-tag tag-must">Unmissable</span>
       </div>
     </div>
 
+    <!-- 2. Helsinki Cathedral -->
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #7AB8D4, #E8E0CC);">
-        <div class="place-card-img-fallback" style="display:flex;">🏛️</div>
+      <div class="place-card-img">
+        <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=800&q=80" alt="Helsinki Cathedral" onerror="this.style.display='none'; this.parentElement.style.background:#E8E0CC">
       </div>
       <div class="place-card-body">
-        <div class="place-type">Public Square · City Centre</div>
-        <div class="place-name">Senate Square</div>
-        <div class="place-desc">Helsinki's grand ceremonial space — the cathedral above, the government palace on one side, the university on another. In the centre, a statue of Tsar Alexander II. It's a strange, stately place that feels slightly out of time. Beautiful in any light, extraordinary in the June evening gold.</div>
-        <span class="place-tag tag-must">Heart of the City</span>
+        <div class="place-type">Neoclassical · Senate Square</div>
+        <div class="place-name">Helsinki Cathedral</div>
+        <div class="place-desc">The great white cathedral at the top of Senate Square — Helsinki's most iconic image. Built in the 1850s, its green dome visible from the harbour. Walk up the broad stairs, look across the square, look back at the sea. This is the heart of the city. Simple, majestic, worth every visit — especially in the long golden June evening light.</div>
+        <div class="place-detail">📍 Unioninkatu 29 · Senate Square</div>
+        <span class="place-tag tag-must">Icon</span>
       </div>
     </div>
 
+    <!-- 3. Design Museum -->
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #E8E0CC, #C8B890);">
-        <div class="place-card-img-fallback" style="display:flex;">🎨</div>
+      <div class="place-card-img">
+        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&q=80" alt="Design Museum Helsinki" onerror="this.style.display='none'; this.parentElement.style.background:#E8D8C0">
       </div>
       <div class="place-card-body">
-        <div class="place-type">Design Museum · Punavuori</div>
+        <div class="place-type">Museum · Punavuori</div>
         <div class="place-name">The Design Museum</div>
-        <div class="place-desc">Finland's national design collection — Marimekko fabrics, Iittala glass, Aalto furniture. A crash course in why Finnish design became a world reference. The building itself is a beautiful 1890s school. A good rainy-morning option, or just because design history is genuinely fascinating here.</div>
-        <span class="place-tag tag-hidden">Design lover's pick</span>
+        <div class="place-desc">Finland's national design collection — Marimekko fabrics, Iittala glass, Aalto furniture. A crash course in why Finnish design became a world reference. The building itself is a beautiful 1890s school. A lovely rainy-morning option, or simply because design history is genuinely fascinating when it's this good. The gift shop alone is worth the trip.</div>
+        <div class="place-detail">📍 Korkeavuorenkatu 23 · Punavuori</div>
+        <span class="place-tag tag-anna">Design lover's pick</span>
+      </div>
+    </div>
+
+    <!-- 4–6 Coming soon -->
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
       </div>
     </div>
 
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #2C2820, #4A4438);">
-        <div class="place-card-img-fallback" style="display:flex;">🌊</div>
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
       </div>
       <div class="place-card-body">
-        <div class="place-type">Outdoor · Sibelius Park</div>
-        <div class="place-name">Sibelius Monument</div>
-        <div class="place-desc">A forest of 600 hollow steel pipes in a park by the sea — an abstract tribute to Finland's greatest composer. Odd, beautiful, very Finnish. The surrounding park, Sibelius Park, runs down to the water. A lovely walk in any direction. Go, be confused, appreciate it.</div>
-        <span class="place-tag tag-relaxed">Worth the Walk</span>
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
       </div>
     </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -134,7 +166,6 @@
   <a href="markets.html" class="nav-bottom-link">← Markets</a>
   <a href="shopping.html" class="nav-bottom-link">Shopping →</a>
 </div>
-
 <footer>
   <div class="footer-logo">Midnight <span>Sun</span> Travel</div>
   <div class="footer-right">Helsinki · June 2025<br>A private journey</div>

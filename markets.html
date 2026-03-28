@@ -5,16 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Markets · Helsinki Guide</title>
 <link rel="stylesheet" href="shared.css">
+<style>
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .place-card { background: var(--offwhite); overflow: hidden; display: flex; flex-direction: column; }
+  .place-card-img { height: 210px; overflow: hidden; position: relative; background: var(--beige); }
+  .place-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  .place-card:hover .place-card-img img { transform: scale(1.05); }
+  .coming-soon-overlay { position: absolute; inset: 0; background: rgba(247,243,236,0.94); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .coming-soon-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: #A09880; }
+  .coming-soon-sub { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #C0B8A8; }
+  .place-card-body { padding: 22px 22px 26px; flex: 1; display: flex; flex-direction: column; }
+  .place-type { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #A09880; font-weight: 500; margin-bottom: 5px; }
+  .place-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--dark); margin-bottom: 9px; line-height: 1.2; }
+  .place-desc { font-size: 13px; line-height: 1.75; color: var(--muted); font-weight: 300; flex: 1; }
+  .place-detail { margin-top: 12px; font-size: 11px; color: #A09880; }
+  .place-tag { display: inline-block; margin-top: 14px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; align-self: flex-start; }
+  .tag-must { background: #F8EAF0; color: #C45C78; border: 1px solid #E8C0CC; }
+  .tag-hidden { background: #EAF3E8; color: #5A8054; border: 1px solid #C8DCC4; }
+  .tag-anna { background: #E8F0F8; color: var(--teal); border: 1px solid #B8D0E0; }
+  .tag-food { background: #F5F0E8; color: #8A7040; border: 1px solid #D8C89C; }
+  .tag-soon { background: #F0EDE4; color: #8A7A60; border: 1px solid #D8D0BC; }
+  @media (max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } .cards-section { padding: 32px 16px; } }
+</style>
 </head>
 <body>
-
 <div class="stripe"></div>
-
 <nav>
   <a href="index.html" class="nav-logo">Midnight <span>Sun</span></a>
   <ul class="nav-links">
     <li><a href="harbour.html">Harbour & Islands</a></li>
-    <li><a href="cafes.html">Cafés</a></li>
+    <li><a href="cafes.html">Food</a></li>
     <li><a href="markets.html" class="active">Markets</a></li>
     <li><a href="sights.html">Sights</a></li>
     <li><a href="shopping.html">Shopping</a></li>
@@ -23,7 +43,7 @@
 </nav>
 
 <div class="page-hero" style="background: #7A4838;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Kauppahalli_Helsinki_2016.jpg/1280px-Kauppahalli_Helsinki_2016.jpg" alt="Helsinki Market Hall" onerror="this.style.display='none'">
+  <img src="https://images.unsplash.com/photo-1596859451004-fcf0bc60d1d5?w=1400&q=80" alt="Helsinki Market Hall" onerror="this.style.display='none'">
   <div class="page-hero-gradient"></div>
   <div class="page-hero-content">
     <div class="page-breadcrumb"><a href="index.html">Guide</a> · Markets</div>
@@ -35,12 +55,8 @@
 <div class="page-intro">
   <div class="section-eyebrow">Taste</div>
   <div class="page-intro-title">Helsinki's markets<br>are <em>alive.</em></div>
-  <p class="intro-body">
-    The open-air market on the South Harbour has been here since the city's earliest days, and it still feels essential. In June it's at its peak — strawberries from Finnish farms, smoked whitefish wrapped in paper, vendors calling out in Finnish and Swedish and tourist-English.
-  </p>
-  <p class="intro-body">
-    The indoor Old Market Hall nearby is different — more refined, but no less vital. Cheese, bread, reindeer meat, cloud berry jam. Come hungry. Stay as long as you want.
-  </p>
+  <p class="intro-body">The open-air market on the South Harbour has been here since the city's earliest days, and it still feels essential. In June it's at its peak — Finnish strawberries, smoked whitefish wrapped in paper, vendors calling out in Finnish and Swedish and tourist-English.</p>
+  <p class="intro-body">The indoor halls nearby are different — more refined, but no less vital. Cheese, bread, reindeer meat, cloudberry jam. Come hungry. Stay as long as you want.</p>
 </div>
 
 <div class="cards-section">
@@ -55,49 +71,103 @@
   </div>
 
   <div class="cards-grid">
-    <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #C45C78, #E8A060);">
-        <div class="place-card-img-fallback" style="display:flex;">🍓</div>
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Open-Air Market · Harbour</div>
-        <div class="place-name">Kauppatori · Market Square</div>
-        <div class="place-desc">The great open square at the water's edge. Stalls selling Finnish strawberries, salmon, smoked fish, cloudberry jam, and every shade of pastry. In June it's in full swing, the Baltic glittering behind it. Buy something, eat it standing, absorb the scene. Mornings are best.</div>
-        <span class="place-tag tag-must">Must Visit</span>
-      </div>
-    </div>
 
+    <!-- 1. Vanha Kauppahalli -->
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #8A6040, #C8A070);">
-        <div class="place-card-img-fallback" style="display:flex;">🏛️</div>
+      <div class="place-card-img">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Vanha Kauppahalli" onerror="this.style.display='none'; this.parentElement.style.background:#C8A070">
       </div>
       <div class="place-card-body">
         <div class="place-type">Indoor Market Hall · Since 1889</div>
         <div class="place-name">Vanha Kauppahalli</div>
-        <div class="place-desc">The Old Market Hall, a red-brick beauty built in 1889. Inside: cheese merchants, fishmongers, spice sellers, a beloved oyster bar, and some of the best smoked salmon you'll ever taste. It's quieter than the outdoor market — warmer, more curated, wonderful. Get the lohikeitto, Finnish salmon soup.</div>
+        <div class="place-desc">The Old Market Hall, a red-brick beauty built in 1889. Inside: cheese merchants, fishmongers, spice sellers, a beloved oyster bar, and some of the best smoked salmon you'll ever taste. Quieter than the outdoor market — warmer, more curated, wonderful. Get the lohikeitto — Finnish salmon soup. Don't rush.</div>
+        <div class="place-detail">📍 Eteläranta 1 · South Harbour</div>
         <span class="place-tag tag-anna">Anna will love this</span>
       </div>
     </div>
 
+    <!-- 2. Stockmann Herkku -->
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #7A9E74, #4A6E44);">
-        <div class="place-card-img-fallback" style="display:flex;">🥬</div>
+      <div class="place-card-img">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80" alt="Stockmann Herkku" onerror="this.style.display='none'; this.parentElement.style.background:#E8D8B0">
       </div>
       <div class="place-card-body">
-        <div class="place-type">Weekend Market · Hakaniemi</div>
-        <div class="place-name">Hakaniemi Market Hall</div>
-        <div class="place-desc">A little less touristy, a little more local. Two floors — fresh produce downstairs, textiles and handicrafts above. The kind of place real Helsinkians shop on Saturday mornings. Grab something from the hot food counter and find a stool upstairs.</div>
-        <span class="place-tag tag-hidden">Local Gem</span>
+        <div class="place-type">Gourmet Food Hall · City Centre</div>
+        <div class="place-name">Stockmann Herkku</div>
+        <div class="place-desc">The legendary basement food hall of Helsinki's grand Stockmann department store. An Aladdin's cave of Finnish and international delicacies — artisan cheeses, cured meats, fresh bread, Finnish chocolates, cloudberry products, and every kind of Nordic ingredient you'd want to bring home. Helsinki's finest food shopping under one roof.</div>
+        <div class="place-detail">📍 Aleksanterinkatu 52 · Basement floor</div>
+        <span class="place-tag tag-must">Gourmet Heaven</span>
       </div>
     </div>
+
+    <!-- 3–6 Coming soon -->
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <div class="nav-bottom">
-  <a href="cafes.html" class="nav-bottom-link">← Café Culture</a>
+  <a href="cafes.html" class="nav-bottom-link">← Food</a>
   <a href="sights.html" class="nav-bottom-link">Sights →</a>
 </div>
-
 <footer>
   <div class="footer-logo">Midnight <span>Sun</span> Travel</div>
   <div class="footer-right">Helsinki · June 2025<br>A private journey</div>

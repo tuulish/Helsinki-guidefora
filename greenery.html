@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parks & Greenery · Helsinki Guide</title>
 <link rel="stylesheet" href="shared.css">
+<style>
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .place-card { background: var(--offwhite); overflow: hidden; display: flex; flex-direction: column; }
+  .place-card-img { height: 210px; overflow: hidden; position: relative; background: var(--beige); }
+  .place-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  .place-card:hover .place-card-img img { transform: scale(1.05); }
+  .coming-soon-overlay { position: absolute; inset: 0; background: rgba(247,243,236,0.94); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .coming-soon-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: #A09880; }
+  .coming-soon-sub { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #C0B8A8; }
+  .place-card-body { padding: 22px 22px 26px; flex: 1; display: flex; flex-direction: column; }
+  .place-type { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #A09880; font-weight: 500; margin-bottom: 5px; }
+  .place-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--dark); margin-bottom: 9px; line-height: 1.2; }
+  .place-desc { font-size: 13px; line-height: 1.75; color: var(--muted); font-weight: 300; flex: 1; }
+  .place-detail { margin-top: 12px; font-size: 11px; color: #A09880; }
+  .place-tag { display: inline-block; margin-top: 14px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; align-self: flex-start; }
+  .tag-must { background: #F8EAF0; color: #C45C78; border: 1px solid #E8C0CC; }
+  .tag-hidden { background: #EAF3E8; color: #5A8054; border: 1px solid #C8DCC4; }
+  .tag-anna { background: #E8F0F8; color: var(--teal); border: 1px solid #B8D0E0; }
+  .tag-soon { background: #F0EDE4; color: #8A7A60; border: 1px solid #D8D0BC; }
+  @media (max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } .cards-section { padding: 32px 16px; } }
+</style>
 </head>
 <body>
 <div class="stripe"></div>
@@ -12,7 +33,7 @@
   <a href="index.html" class="nav-logo">Midnight <span>Sun</span></a>
   <ul class="nav-links">
     <li><a href="harbour.html">Harbour & Islands</a></li>
-    <li><a href="cafes.html">Cafés</a></li>
+    <li><a href="cafes.html">Food</a></li>
     <li><a href="markets.html">Markets</a></li>
     <li><a href="sights.html">Sights</a></li>
     <li><a href="shopping.html">Shopping</a></li>
@@ -21,6 +42,7 @@
 </nav>
 
 <div class="page-hero" style="background: #7A9E74;">
+  <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1400&q=80" alt="Helsinki park" onerror="this.style.display='none'">
   <div class="page-hero-gradient"></div>
   <div class="page-hero-content">
     <div class="page-breadcrumb"><a href="index.html">Guide</a> · Parks & Greenery</div>
@@ -32,12 +54,8 @@
 <div class="page-intro">
   <div class="section-eyebrow">Breathe</div>
   <div class="page-intro-title">June in Helsinki<br>is <em>impossibly green.</em></div>
-  <p class="intro-body">
-    Helsinki is one of Europe's greenest capitals — the city is built around parks, forests, and the sea. In June, after the long winter, everything is newly, almost aggressively green. The parks overflow. People are outdoors at midnight because the sun barely sets.
-  </p>
-  <p class="intro-body">
-    There's a particular Finnish relationship with outdoor space — parks are not decorative, they're essential. Esplanadi fills with office workers at lunchtime. Kaivopuisto is where people go to simply be. These are not tourist destinations, they're where the city lives.
-  </p>
+  <p class="intro-body">Helsinki is one of Europe's greenest capitals — built around parks, forests, and the sea. In June, after the long winter, everything is newly, almost aggressively green. The parks overflow. People are outdoors at midnight because the sun barely sets.</p>
+  <p class="intro-body">There's a particular Finnish relationship with outdoor space — parks are not decorative, they're essential. These are not tourist destinations, they're where the city actually lives.</p>
 </div>
 
 <div class="cards-section">
@@ -52,41 +70,96 @@
   </div>
 
   <div class="cards-grid">
-    <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #7A9E74, #4A6E44);">
-        <div class="place-card-img-fallback" style="display:flex;">🌳</div>
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Park · City Centre</div>
-        <div class="place-name">Esplanadi</div>
-        <div class="place-desc">The long, tree-lined boulevard running from the city centre to the harbour — Helsinki's living room. In June it's full of people: families, musicians, café tables spilling out, children. The Kappeli restaurant at the far end has the city's best outdoor terrace. Walk it slowly, at least once.</div>
-        <span class="place-tag tag-must">Essential</span>
-      </div>
-    </div>
 
+    <!-- 1. Kaivopuisto -->
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #3A6E82, #7A9E74);">
-        <div class="place-card-img-fallback" style="display:flex;">🌊</div>
+      <div class="place-card-img">
+        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80" alt="Kaivopuisto park" onerror="this.style.display='none'; this.parentElement.style.background:#7A9E74">
       </div>
       <div class="place-card-body">
         <div class="place-type">Park · Sea · Eira</div>
         <div class="place-name">Kaivopuisto</div>
-        <div class="place-desc">Helsinki's grand park by the sea — large, hilly, full of old trees, with views of the islands and passing ferries. The park runs down to rocky coastline you can sit on. A café sits at the edge. On a June evening, with a long sky and the Baltic below, it's one of the best places in the city.</div>
+        <div class="place-desc">Helsinki's grand park by the sea — large, hilly, full of old trees, with views of the islands and passing ferries. The park runs down to rocky coastline you can sit on. A café sits at the edge. On a June evening, with a long sky and the Baltic below, it is one of the best places in the entire city to simply exist. The kind of park that turns hours into minutes.</div>
+        <div class="place-detail">📍 Kaivopuisto · Eira</div>
         <span class="place-tag tag-anna">Anna will love this</span>
       </div>
     </div>
 
+    <!-- 2. Töölönlahti -->
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #7AB8D4, #7A9E74);">
-        <div class="place-card-img-fallback" style="display:flex;">🦢</div>
+      <div class="place-card-img">
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80" alt="Töölönlahti Bay" onerror="this.style.display='none'; this.parentElement.style.background:#7AB8D4">
       </div>
       <div class="place-card-body">
         <div class="place-type">Urban Waterway · Töölö</div>
         <div class="place-name">Töölönlahti Bay</div>
-        <div class="place-desc">An urban bay in the centre of the city, ringed by a running and cycling path. Swans on the water, the opera house on one side, Finlandia Hall on the other. Walking the full circuit takes about 40 minutes and is deeply pleasant. Pedal boats available in summer if the mood strikes.</div>
-        <span class="place-tag tag-relaxed">Walking Circuit</span>
+        <div class="place-desc">An urban bay in the centre of the city, ringed by a running and cycling path. Swans on the water, the opera house on one side, Finlandia Hall on the other. Walking the full circuit takes about 40 minutes and is deeply pleasant — especially at dusk when the water turns gold. Pedal boats available in summer if the mood strikes.</div>
+        <div class="place-detail">📍 Töölönlahti · City Centre</div>
+        <span class="place-tag tag-must">Walking Circuit</span>
       </div>
     </div>
+
+    <!-- 3–6 Coming soon -->
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -94,7 +167,6 @@
   <a href="shopping.html" class="nav-bottom-link">← Shopping</a>
   <a href="berries.html" class="nav-bottom-link">Finnish Berries →</a>
 </div>
-
 <footer>
   <div class="footer-logo">Midnight <span>Sun</span> Travel</div>
   <div class="footer-right">Helsinki · June 2025<br>A private journey</div>

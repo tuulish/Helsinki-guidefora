@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shopping · Helsinki Guide</title>
 <link rel="stylesheet" href="shared.css">
+<style>
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .place-card { background: var(--offwhite); overflow: hidden; display: flex; flex-direction: column; }
+  .place-card-img { height: 210px; overflow: hidden; position: relative; background: var(--beige); }
+  .place-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  .place-card:hover .place-card-img img { transform: scale(1.05); }
+  .coming-soon-overlay { position: absolute; inset: 0; background: rgba(247,243,236,0.94); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .coming-soon-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: #A09880; }
+  .coming-soon-sub { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #C0B8A8; }
+  .place-card-body { padding: 22px 22px 26px; flex: 1; display: flex; flex-direction: column; }
+  .place-type { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #A09880; font-weight: 500; margin-bottom: 5px; }
+  .place-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--dark); margin-bottom: 9px; line-height: 1.2; }
+  .place-desc { font-size: 13px; line-height: 1.75; color: var(--muted); font-weight: 300; flex: 1; }
+  .place-detail { margin-top: 12px; font-size: 11px; color: #A09880; }
+  .place-tag { display: inline-block; margin-top: 14px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; align-self: flex-start; }
+  .tag-must { background: #F8EAF0; color: #C45C78; border: 1px solid #E8C0CC; }
+  .tag-hidden { background: #EAF3E8; color: #5A8054; border: 1px solid #C8DCC4; }
+  .tag-anna { background: #E8F0F8; color: var(--teal); border: 1px solid #B8D0E0; }
+  .tag-soon { background: #F0EDE4; color: #8A7A60; border: 1px solid #D8D0BC; }
+  @media (max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } .cards-section { padding: 32px 16px; } }
+</style>
 </head>
 <body>
 <div class="stripe"></div>
@@ -12,7 +33,7 @@
   <a href="index.html" class="nav-logo">Midnight <span>Sun</span></a>
   <ul class="nav-links">
     <li><a href="harbour.html">Harbour & Islands</a></li>
-    <li><a href="cafes.html">Cafés</a></li>
+    <li><a href="cafes.html">Food</a></li>
     <li><a href="markets.html">Markets</a></li>
     <li><a href="sights.html">Sights</a></li>
     <li><a href="shopping.html" class="active">Shopping</a></li>
@@ -21,23 +42,20 @@
 </nav>
 
 <div class="page-hero" style="background: #C45C78;">
+  <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1400&q=80" alt="Helsinki Shopping" onerror="this.style.display='none'">
   <div class="page-hero-gradient"></div>
   <div class="page-hero-content">
     <div class="page-breadcrumb"><a href="index.html">Guide</a> · Shopping</div>
     <div class="page-hero-title">Retail <em>Therapy</em></div>
-    <div class="page-hero-sub">🛍️ · Finds · Marimekko, Iittala, design shops, and Punavuori gems</div>
+    <div class="page-hero-sub">🛍️ · Finds · Finnish design, vintage treasures, and Punavuori gems</div>
   </div>
 </div>
 
 <div class="page-intro">
   <div class="section-eyebrow">Finds</div>
   <div class="page-intro-title">Finnish design is<br><em>the real thing.</em></div>
-  <p class="intro-body">
-    Helsinki is a design city in the truest sense — it is not a marketing label. The names are familiar even outside Finland: Marimekko, Iittala, Artek. But the city also has a layer of smaller, independent shops that reward wandering. The Punavuori neighbourhood (also called "Design District Helsinki") is where most of them live.
-  </p>
-  <p class="intro-body">
-    Bring a bigger bag. Or ship things home. Buy the Finnish linen kitchen towel, the Iittala bowl, the jar of cloudberry jam. These are things you will actually use.
-  </p>
+  <p class="intro-body">Helsinki is a design city in the truest sense. The names are familiar even outside Finland: Marimekko, Iittala, Artek. But the city also has a layer of smaller, independent shops that reward wandering. The Punavuori neighbourhood — Design District Helsinki — is where most of them live.</p>
+  <p class="intro-body">Bring a bigger bag. Buy the Finnish linen kitchen towel, the Iittala bowl, the jar of cloudberry jam. These are things you will actually use.</p>
 </div>
 
 <div class="cards-section">
@@ -48,81 +66,99 @@
 
   <div class="tip-box">
     <div class="tip-box-eyebrow">✦ Curator's note</div>
-    <div class="tip-box-text">"The Design District Helsinki map is free — pick one up at any design shop or hotel. It lists around 200 shops, studios, and galleries in a walkable area. Use it."</div>
+    <div class="tip-box-text">"The Design District Helsinki map is free — pick one up at any design shop or hotel. It lists around 200 shops, studios and galleries in a walkable area. Use it."</div>
   </div>
 
   <div class="cards-grid">
-    <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #C45C78, #E8A0B0);">
-        <div class="place-card-img-fallback" style="display:flex; font-size:36px;">🌺</div>
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Flagship · Esplanadi</div>
-        <div class="place-name">Marimekko</div>
-        <div class="place-desc">The Esplanadi flagship store is the best place to see Marimekko as it should be — the full collections, the bold poppy prints, the summer dresses. Finnish design at its most joyful and unafraid. Even if you don't buy anything, the store itself is a pleasure. (You will buy something.)</div>
-        <span class="place-tag tag-anna">Anna will love this</span>
-      </div>
-    </div>
 
+    <!-- 1. Punavuori -->
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #E8E0CC, #B8D0E0);">
-        <div class="place-card-img-fallback" style="display:flex;">🫙</div>
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Finnish Design · Esplanadi</div>
-        <div class="place-name">Iittala</div>
-        <div class="place-desc">Glass and ceramic designed to last a lifetime. Iittala's Helsinki store stocks the full range — the iconic Aalto vase, the Kastehelmi bowls, the Teema plates. Beautiful objects that are actually meant to be used. A proper Finnish souvenir that isn't a reindeer toy.</div>
-        <span class="place-tag tag-must">Design Classic</span>
-      </div>
-    </div>
-
-    <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #2C2820, #7A6E60);">
-        <div class="place-card-img-fallback" style="display:flex; font-size:32px;">🏪</div>
+      <div class="place-card-img">
+        <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&q=80" alt="Punavuori Design District" onerror="this.style.display='none'; this.parentElement.style.background:#C45C78">
       </div>
       <div class="place-card-body">
         <div class="place-type">Neighbourhood · South Helsinki</div>
         <div class="place-name">Punavuori Design District</div>
-        <div class="place-desc">The neighbourhood south of the city centre where independent design shops cluster. Concept stores, ceramics studios, vintage furniture, Finnish linen, art galleries, and the kind of shop with one beautiful thing in the window and ten more inside. Walk slowly. Allow detours.</div>
-        <span class="place-tag tag-hidden">Neighbourhood wander</span>
+        <div class="place-desc">The neighbourhood south of the city centre where independent design shops cluster. Concept stores, ceramics studios, vintage furniture, Finnish linen, art galleries, and the kind of shop with one beautiful thing in the window and ten more inside. Walk slowly. Allow detours. This is not a place you rush through.</div>
+        <div class="place-detail">📍 Punavuori · South of city centre</div>
+        <span class="place-tag tag-anna">Neighbourhood wander</span>
       </div>
     </div>
 
+    <!-- 2. Academic Bookstore -->
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #7A9E74, #E8E0CC);">
-        <div class="place-card-img-fallback" style="display:flex;">📚</div>
+      <div class="place-card-img">
+        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&q=80" alt="Academic Bookstore" onerror="this.style.display='none'; this.parentElement.style.background:#E8E0CC">
       </div>
       <div class="place-card-body">
-        <div class="place-type">Bookshop · Keskusta</div>
+        <div class="place-type">Bookshop · Aalto Building · Keskusta</div>
         <div class="place-name">Academic Bookstore</div>
-        <div class="place-desc">Alvar Aalto's building, home to one of the best bookshops in Northern Europe. The English section is excellent. Buy something to read in the park. The building's atrium and skylight alone make it worth the stop. Café Aalto is inside if you need a break between shelves.</div>
-        <span class="place-tag tag-relaxed">Lovely detour</span>
+        <div class="place-desc">Alvar Aalto's building, home to one of the best bookshops in Northern Europe. The English section is excellent — buy something to read in the park. The building's atrium and skylight alone make it worth the stop. Café Aalto is inside if you need a break between shelves. One of those places where you go for one thing and stay much longer.</div>
+        <div class="place-detail">📍 Pohjoisesplanadi 39 · City Centre</div>
+        <span class="place-tag tag-must">Aalto Architecture</span>
       </div>
     </div>
 
+    <!-- 3. UFF Vintage -->
     <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #7AB8D4, #3A6E82);">
-        <div class="place-card-img-fallback" style="display:flex;">🎨</div>
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Concept Store · Kamppi</div>
-        <div class="place-name">Artek</div>
-        <div class="place-desc">The furniture company founded by Alvar Aalto in 1935, still producing the same iconic designs. The store is itself beautifully designed. The furniture is beautiful but expensive — the accessories and smaller objects are more approachable. Finnish modernism in object form.</div>
-        <span class="place-tag tag-must">Finnish Icon</span>
-      </div>
-    </div>
-
-    <div class="place-card">
-      <div class="place-card-img" style="background: linear-gradient(135deg, #C45C78, #2C2820);">
-        <div class="place-card-img-fallback" style="display:flex;">✨</div>
+      <div class="place-card-img">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80" alt="Vintage shopping Helsinki" onerror="this.style.display='none'; this.parentElement.style.background:#7A6E60">
       </div>
       <div class="place-card-body">
         <div class="place-type">Vintage · Kallio</div>
-        <div class="place-name">UFF & Vintage Shops · Kallio</div>
-        <div class="place-desc">The Kallio neighbourhood has a strong vintage scene — charity shops, second-hand design finds, old Finnish ceramics. The UFF shops often have surprising Marimekko pieces and old Iittala at fraction of retail. Friday afternoons are particularly good. Bring cash, bring patience.</div>
+        <div class="place-name">UFF &amp; Vintage Shops · Kallio</div>
+        <div class="place-desc">The Kallio neighbourhood has a strong vintage scene — charity shops, second-hand design finds, old Finnish ceramics. The UFF shops often have surprising Marimekko pieces and old Iittala at a fraction of retail price. Friday afternoons are particularly good for fresh stock. Bring cash, bring patience, bring an open mind.</div>
+        <div class="place-detail">📍 Kallio neighbourhood</div>
         <span class="place-tag tag-hidden">Treasure Hunt</span>
       </div>
     </div>
+
+    <!-- 4–6 Coming soon -->
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">· Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">Coming soon.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -130,7 +166,6 @@
   <a href="sights.html" class="nav-bottom-link">← Sights</a>
   <a href="greenery.html" class="nav-bottom-link">Parks & Greenery →</a>
 </div>
-
 <footer>
   <div class="footer-logo">Midnight <span>Sun</span> Travel</div>
   <div class="footer-right">Helsinki · June 2025<br>A private journey</div>

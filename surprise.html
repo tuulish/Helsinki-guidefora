@@ -6,6 +6,124 @@
 <title>A Little Something · Helsinki Guide</title>
 <link rel="stylesheet" href="shared.css">
 <style>
+  /* ── BIRTHDAY OVERLAY ── */
+  #birthday-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(44, 40, 32, 0.55);
+    backdrop-filter: blur(4px);
+    animation: overlayIn 0.6s ease both;
+  }
+  @keyframes overlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  #birthday-card {
+    background: #F7F3EC;
+    border: 1px solid #D8D0BC;
+    max-width: 520px;
+    width: 90vw;
+    padding: 56px 48px 48px;
+    text-align: center;
+    position: relative;
+    animation: cardIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    overflow: hidden;
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  #close-btn {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #A09880;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+    transition: color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  #close-btn:hover { color: #2C2820; }
+
+  /* Tulip bouquet SVG */
+  #tulip-bouquet {
+    display: block;
+    margin: 0 auto 28px;
+    animation: bouquetIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  }
+  @keyframes bouquetIn {
+    from { opacity: 0; transform: translateY(60px) scale(0.7); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .bday-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #C45C78;
+    font-weight: 500;
+    margin-bottom: 16px;
+    animation: fadeUp 0.8s ease 1s both;
+  }
+  .bday-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 400;
+    font-style: italic;
+    color: #2C2820;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    animation: fadeUp 0.8s ease 1.1s both;
+  }
+  .bday-sub {
+    font-size: 14px;
+    color: #6A6050;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease 1.2s both;
+  }
+  .bday-btn {
+    display: inline-block;
+    background: #C45C78;
+    color: #F7F3EC;
+    border: none;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    animation: fadeUp 0.8s ease 1.3s both;
+  }
+  .bday-btn:hover { background: #A84864; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── CONFETTI CANVAS ── */
+  #confetti-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10000;
+  }
+
+  /* ── SURPRISE PAGE CONTENT ── */
   .surprise-hero {
     background: #3A6E82;
     min-height: 60vh;
@@ -32,10 +150,6 @@
     z-index: 1;
     padding: 80px 40px;
     animation: fadeUp 1s ease both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
   }
   .surprise-breadcrumb {
     font-size: 10px;
@@ -69,7 +183,6 @@
     font-weight: 300;
     letter-spacing: 0.08em;
   }
-
   .clue-section {
     background: #F7F3EC;
     padding: 80px 120px;
@@ -101,17 +214,8 @@
     max-width: 560px;
     margin: 0 auto 40px;
   }
-  .clue-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 40px;
-  }
-  .clue-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
+  .clue-dots { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; }
+  .clue-dot { width: 10px; height: 10px; border-radius: 50%; }
   .clue-hint-box {
     background: #2C2820;
     color: #F7F3EC;
@@ -134,7 +238,6 @@
     font-family: 'Playfair Display', serif;
     line-height: 1;
   }
-
   .coming-section {
     background: #EDE8DF;
     padding: 72px 120px;
@@ -156,27 +259,107 @@
     max-width: 400px;
     margin: 0 auto;
   }
-  .lock-icon {
-    font-size: 48px;
-    margin-bottom: 20px;
-    display: block;
-    opacity: 0.4;
-  }
+  .lock-icon { font-size: 48px; margin-bottom: 20px; display: block; opacity: 0.4; }
 
   @media (max-width: 900px) {
     .clue-section { padding: 48px 28px; }
     .coming-section { padding: 48px 28px; }
     .clue-hint-box { padding: 28px 28px; }
+    #birthday-card { padding: 48px 28px 40px; }
   }
 </style>
 </head>
 <body>
+
+<!-- CONFETTI CANVAS -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- BIRTHDAY OVERLAY -->
+<div id="birthday-overlay">
+  <div id="birthday-card">
+    <button id="close-btn" onclick="closeBirthday()" aria-label="Close">✕</button>
+
+    <!-- SVG Tulip Bouquet -->
+    <svg id="tulip-bouquet" width="200" height="220" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- Stems -->
+      <path d="M100 210 Q98 170 95 140" stroke="#7A9E74" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M100 210 Q105 165 112 135" stroke="#7A9E74" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M100 210 Q93 168 82 138" stroke="#7A9E74" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M100 210 Q102 172 120 148" stroke="#7A9E74" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M100 210 Q96 175 76 152" stroke="#7A9E74" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+      <!-- Leaves -->
+      <path d="M97 175 Q85 162 80 158" stroke="#7A9E74" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M103 172 Q115 160 118 156" stroke="#7A9E74" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+      <!-- Tulip 1 - centre, tallest, deep rose -->
+      <g transform="translate(95,112)">
+        <ellipse cx="0" cy="18" rx="10" ry="18" fill="#C45C78" opacity="0.95"/>
+        <ellipse cx="-8" cy="12" rx="7" ry="16" fill="#D4708A" transform="rotate(-15,-8,12)"/>
+        <ellipse cx="8" cy="12" rx="7" ry="16" fill="#D4708A" transform="rotate(15,8,12)"/>
+        <ellipse cx="0" cy="8" rx="6" ry="14" fill="#E8A0B4" opacity="0.6"/>
+      </g>
+
+      <!-- Tulip 2 - right, medium, pink -->
+      <g transform="translate(110,118) rotate(12)">
+        <ellipse cx="0" cy="16" rx="9" ry="16" fill="#D4708A" opacity="0.95"/>
+        <ellipse cx="-7" cy="10" rx="6" ry="14" fill="#E8A0B4" transform="rotate(-14,-7,10)"/>
+        <ellipse cx="7" cy="10" rx="6" ry="14" fill="#E8A0B4" transform="rotate(14,7,10)"/>
+        <ellipse cx="0" cy="7" rx="5" ry="12" fill="#F0C0CC" opacity="0.6"/>
+      </g>
+
+      <!-- Tulip 3 - left, medium, deeper -->
+      <g transform="translate(80,122) rotate(-12)">
+        <ellipse cx="0" cy="16" rx="9" ry="16" fill="#B84870" opacity="0.95"/>
+        <ellipse cx="-7" cy="10" rx="6" ry="14" fill="#C45C78" transform="rotate(-14,-7,10)"/>
+        <ellipse cx="7" cy="10" rx="6" ry="14" fill="#C45C78" transform="rotate(14,7,10)"/>
+        <ellipse cx="0" cy="7" rx="5" ry="12" fill="#E09CB0" opacity="0.6"/>
+      </g>
+
+      <!-- Tulip 4 - far right, bud, light -->
+      <g transform="translate(122,132) rotate(22)">
+        <ellipse cx="0" cy="13" rx="7" ry="14" fill="#E8A0B4" opacity="0.9"/>
+        <ellipse cx="-5" cy="8" rx="5" ry="12" fill="#F0C0CC" transform="rotate(-12,-5,8)"/>
+        <ellipse cx="5" cy="8" rx="5" ry="12" fill="#F0C0CC" transform="rotate(12,5,8)"/>
+      </g>
+
+      <!-- Tulip 5 - far left, bud, dark -->
+      <g transform="translate(74,138) rotate(-22)">
+        <ellipse cx="0" cy="13" rx="7" ry="14" fill="#C45C78" opacity="0.85"/>
+        <ellipse cx="-5" cy="8" rx="5" ry="12" fill="#D4708A" transform="rotate(-12,-5,8)"/>
+        <ellipse cx="5" cy="8" rx="5" ry="12" fill="#D4708A" transform="rotate(12,5,8)"/>
+      </g>
+
+      <!-- Ribbon bow -->
+      <path d="M85 208 Q100 200 115 208" stroke="#C45C78" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="93" cy="205" rx="8" ry="5" fill="#E8A0B4" transform="rotate(-20,93,205)" opacity="0.8"/>
+      <ellipse cx="107" cy="205" rx="8" ry="5" fill="#E8A0B4" transform="rotate(20,107,205)" opacity="0.8"/>
+      <circle cx="100" cy="205" r="4" fill="#C45C78"/>
+
+      <!-- Small sparkles -->
+      <text x="42" y="90" font-size="14" fill="#C45C78" opacity="0.7">✦</text>
+      <text x="148" y="80" font-size="10" fill="#7AB8D4" opacity="0.8">✦</text>
+      <text x="58" y="60" font-size="8" fill="#7A9E74" opacity="0.7">✦</text>
+      <text x="138" y="110" font-size="8" fill="#C45C78" opacity="0.5">✦</text>
+    </svg>
+
+    <div class="bday-eyebrow">✦ For you, Anna</div>
+    <div class="bday-title">Happy Birthday!</div>
+    <div class="bday-sub">
+      Wishing you the most beautiful Juhannus in Helsinki.<br>
+      This guide was made with you in mind — every single page.
+    </div>
+    <button class="bday-btn" onclick="closeBirthday()">Open your guide →</button>
+  </div>
+</div>
+
+<!-- MAIN PAGE -->
 <div class="stripe"></div>
 <nav>
   <a href="index.html" class="nav-logo">Midnight <span>Sun</span></a>
   <ul class="nav-links">
     <li><a href="harbour.html">Harbour & Islands</a></li>
-    <li><a href="cafes.html">Cafés</a></li>
+    <li><a href="cafes.html">Food</a></li>
     <li><a href="markets.html">Markets</a></li>
     <li><a href="sights.html">Sights</a></li>
     <li><a href="shopping.html">Shopping</a></li>
@@ -196,45 +379,131 @@
 <div class="clue-section">
   <div class="clue-eyebrow">Your only clue</div>
   <div class="clue-title">Worth <em>dressing up</em> for.</div>
-  <p class="clue-body">
-    Loading...
-  </p>
-  <p class="clue-body">
-    Loading...
-  </p>
-
+  <p class="clue-body">Somewhere in the itinerary, a gift is waiting. It was chosen a long time ago, with you specifically in mind. Something that could only be this, in this city, on this trip.</p>
+  <p class="clue-body">Consider this page your only clue. Read it carefully.</p>
   <div class="clue-dots">
     <div class="clue-dot" style="background:#C45C78"></div>
     <div class="clue-dot" style="background:#7A9E74"></div>
     <div class="clue-dot" style="background:#7AB8D4"></div>
   </div>
-
   <div class="clue-hint-box">
-    Patience is a virtue :).
+    Something deeply Finnish is on the table. And it is worth dressing up for.
   </div>
 </div>
 
 <div class="coming-section">
   <span class="lock-icon">🔒</span>
   <div class="coming-title">More will be revealed.</div>
-  <p class="coming-body">
-    This page will be updated as your journey approaches. A detail here, a hint there. Check back as June gets closer.
-  </p>
+  <p class="coming-body">This page will be updated as your journey approaches. A detail here, a hint there. Check back as June gets closer.</p>
   <br>
-  <p class="coming-body" style="font-family:'Playfair Display',serif; font-style:italic; font-size:16px; color:#2C2820;">
-    For now — that's all you get.
-  </p>
+  <p class="coming-body" style="font-family:'Playfair Display',serif; font-style:italic; font-size:16px; color:#2C2820;">For now — that's all you get.</p>
 </div>
 
 <div class="nav-bottom">
   <a href="berries.html" class="nav-bottom-link">← Finnish Berries</a>
   <a href="index.html" class="nav-bottom-link">Back to Guide →</a>
 </div>
-
 <footer>
   <div class="footer-logo">Midnight <span>Sun</span> Travel</div>
   <div class="footer-right">Helsinki · June 2025<br>A private journey</div>
 </footer>
 <div class="stripe"></div>
+
+<script>
+  // ── CONFETTI ──
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  const COLORS = ['#C45C78','#E8A0B4','#7A9E74','#7AB8D4','#E8E0CC','#3A6E82','#F0C0CC','#D4708A'];
+  let pieces = [];
+  let animRunning = true;
+
+  function randomBetween(a, b) { return a + Math.random() * (b - a); }
+
+  function spawnPiece() {
+    return {
+      x: randomBetween(0, canvas.width),
+      y: randomBetween(-20, -5),
+      r: randomBetween(4, 9),
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      speed: randomBetween(2, 5),
+      drift: randomBetween(-1.2, 1.2),
+      rotation: randomBetween(0, Math.PI * 2),
+      rotSpeed: randomBetween(-0.06, 0.06),
+      shape: Math.random() > 0.5 ? 'rect' : 'circle',
+      w: randomBetween(6, 14),
+      h: randomBetween(3, 7),
+      opacity: 1,
+    };
+  }
+
+  // Spawn initial burst
+  for (let i = 0; i < 140; i++) {
+    const p = spawnPiece();
+    p.y = randomBetween(-200, canvas.height * 0.5);
+    pieces.push(p);
+  }
+
+  let spawnTimer = 0;
+  function animate() {
+    if (!animRunning) { ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    spawnTimer++;
+    if (spawnTimer < 120 && pieces.length < 200) {
+      for (let i = 0; i < 3; i++) pieces.push(spawnPiece());
+    }
+
+    pieces = pieces.filter(p => p.y < canvas.height + 20 && p.opacity > 0.05);
+
+    pieces.forEach(p => {
+      p.y += p.speed;
+      p.x += p.drift;
+      p.rotation += p.rotSpeed;
+      if (p.y > canvas.height * 0.7) p.opacity -= 0.008;
+
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.fillStyle = p.color;
+
+      if (p.shape === 'circle') {
+        ctx.beginPath();
+        ctx.arc(0, 0, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      }
+      ctx.restore();
+    });
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ── CLOSE BIRTHDAY OVERLAY ──
+  function closeBirthday() {
+    const overlay = document.getElementById('birthday-overlay');
+    overlay.style.transition = 'opacity 0.4s ease';
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      // Let confetti fade after closing
+      setTimeout(() => { animRunning = false; }, 3000);
+    }, 400);
+  }
+
+  // Also close on overlay background click
+  document.getElementById('birthday-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeBirthday();
+  });
+</script>
 </body>
 </html>
