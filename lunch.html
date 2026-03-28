@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cafés · Helsinki Guide</title>
+<title>Lunch · Helsinki Guide</title>
 <link rel="stylesheet" href="shared.css">
 <style>
   .food-subnav {
@@ -13,7 +13,6 @@
     display: flex;
     align-items: center;
     height: 48px;
-    gap: 0;
   }
   .food-subnav-label {
     font-size: 9px;
@@ -119,11 +118,7 @@
     font-weight: 300;
     flex: 1;
   }
-  .place-detail {
-    margin-top: 12px;
-    font-size: 11px;
-    color: #A09880;
-  }
+  .place-detail { margin-top: 12px; font-size: 11px; color: #A09880; }
   .place-tag {
     display: inline-block;
     margin-top: 14px;
@@ -134,6 +129,7 @@
     align-self: flex-start;
   }
   .tag-must { background: #F8EAF0; color: #C45C78; border: 1px solid #E8C0CC; }
+  .tag-hidden { background: #EAF3E8; color: #5A8054; border: 1px solid #C8DCC4; }
   .tag-anna { background: #E8F0F8; color: var(--teal); border: 1px solid #B8D0E0; }
   .tag-food { background: #F5F0E8; color: #8A7040; border: 1px solid #D8C89C; }
   .tag-soon { background: #F0EDE4; color: #8A7A60; border: 1px solid #D8D0BC; }
@@ -162,93 +158,88 @@
 
 <div class="food-subnav">
   <div class="food-subnav-label">Food &amp; Drink</div>
-  <a href="cafes.html" class="food-tab active"><span class="food-tab-icon">☕</span>Cafés</a>
-  <a href="lunch.html" class="food-tab"><span class="food-tab-icon">🥗</span>Lunch</a>
+  <a href="cafes.html" class="food-tab"><span class="food-tab-icon">☕</span>Cafés</a>
+  <a href="lunch.html" class="food-tab active"><span class="food-tab-icon">🥗</span>Lunch</a>
   <a href="dinner.html" class="food-tab"><span class="food-tab-icon">🍽️</span>Dinner</a>
 </div>
 
-<div class="page-hero" style="background: #4A3820;">
-  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=80" alt="Helsinki café" onerror="this.style.display='none'">
+<div class="page-hero" style="background: #4A6040;">
+  <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1400&q=80" alt="Helsinki lunch" onerror="this.style.display='none'">
   <div class="page-hero-gradient"></div>
   <div class="page-hero-content">
-    <div class="page-breadcrumb"><a href="index.html">Guide</a> · Food · <strong>Cafés</strong></div>
-    <div class="page-hero-title">Helsinki <em>Cafés</em></div>
-    <div class="page-hero-sub">☕ · Slow mornings · From Japanese sandos to century-old patisseries</div>
+    <div class="page-breadcrumb"><a href="index.html">Guide</a> · Food · <strong>Lunch</strong></div>
+    <div class="page-hero-title">Helsinki <em>Lunch</em></div>
+    <div class="page-hero-sub">🥗 · Midday · From sourdough bakery-bistros to neighbourhood classics</div>
   </div>
 </div>
 
 <div class="page-intro">
-  <div class="section-eyebrow">Slow mornings</div>
-  <div class="page-intro-title">Helsinki takes its<br><em>coffee seriously.</em></div>
-  <p class="intro-body">Finland drinks more coffee per capita than almost any country on earth, and Helsinki is where that culture peaks. The café scene moves between worlds: Japanese-inspired sando spots, grand old patisseries open since the 1800s, and specialty roasters treating single origins like fine wine.</p>
-  <p class="intro-body">Start the morning slowly. A cardamom bun or a fluffy fruit sando somewhere sunlit. This is not a city that rushes its mornings, and neither should you.</p>
+  <div class="section-eyebrow">Midday</div>
+  <div class="page-intro-title">Helsinki lunches<br>are <em>worth sitting down for.</em></div>
+  <p class="intro-body">
+    The Finnish lunch culture is genuinely good — proper set menus, daily changing dishes, reasonable prices, and a relaxed pace that encourages you to actually eat instead of rush. Most places offer a lounas (lunch) menu on weekdays that includes soup, main, salad, bread, and coffee.
+  </p>
+  <p class="intro-body">
+    These are the places worth building your midday around.
+  </p>
 </div>
 
 <div class="cards-section">
   <div class="cards-header">
-    <div class="section-eyebrow">Where to go</div>
-    <div class="section-title-lg">Six <em>cafés</em></div>
+    <div class="section-eyebrow">Where to eat</div>
+    <div class="section-title-lg">Six <em>lunch spots</em></div>
   </div>
 
   <div class="tip-box">
     <div class="tip-box-eyebrow">✦ Curator's note</div>
-    <div class="tip-box-text">"If you see a queue outside Café Tampopo, join it. And get a korvapuusti — the Finnish cardamom bun — at least once. One will not be enough."</div>
+    <div class="tip-box-text">"Finnish lunch menus run roughly 11:30–14:30 on weekdays. On weekends some places do brunch instead. Always worth arriving before 1pm to get first choice of dishes."</div>
   </div>
 
   <div class="cards-grid">
 
+    <!-- 1. Levain -->
     <div class="place-card">
       <div class="place-card-img">
-        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800&q=80" alt="Café Tampopo sando" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=800&q=80" alt="Levain bakery" onerror="this.style.display='none'">
       </div>
       <div class="place-card-body">
-        <div class="place-type">Japanese Café · Kamppi</div>
-        <div class="place-name">Café Tampopo</div>
-        <div class="place-desc">A tiny Japanese-inspired café next to Cinema Orion, serving sando sandwiches on cloud-light shokupan bread — chicken katsu, tamago, seasonal fruit. Matcha lattes with bear latte art, Hojicha, Swiss rolls, Purin pudding. Jazz records playing in the background. Almost always has a queue outside. Every minute is worth it.</div>
-        <div class="place-detail">📍 Eerikinkatu 15–17</div>
-        <span class="place-tag tag-must">Must Visit</span>
+        <div class="place-type">Bakery Eatery · Töölö & Punavuori</div>
+        <div class="place-name">Levain</div>
+        <div class="place-desc">A wonderful bakery-bistro with two locations — Töölö and Punavuori, both close to the city centre. Organic food, fantastic sourdough bread, granola-berry-yoghurt breakfasts, egg brioche, waffles with honey. Intellectual, bohemian atmosphere. The kind of place you sit down for one coffee and stay for two hours. Go for brunch or an early lunch.</div>
+        <div class="place-detail">📍 Töölö · also Punavuori</div>
+        <span class="place-tag tag-anna">Anna will love this</span>
       </div>
     </div>
 
+    <!-- 2. Ravintola Oiva -->
     <div class="place-card">
       <div class="place-card-img">
-        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80" alt="Layers Bakery croissants" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Ravintola Oiva" onerror="this.style.display='none'">
       </div>
       <div class="place-card-body">
-        <div class="place-type">Artisan Bakery · Töölö & Punavuori</div>
-        <div class="place-name">Layers Bakery</div>
-        <div class="place-desc">Probably the best croissants in Finland. A tiny bakery run by Finnish-Spanish baker Daniel Tobal Autiokari — room for two people inside, a queue on the pavement. The pain au chocolat has perfect structure: light, buttery, crunchy outside, soft within. Go early on weekends. They're sold out by 11am.</div>
-        <div class="place-detail">📍 Cygneauksenkatu 6 · also Bulevardi 15</div>
-        <span class="place-tag tag-anna">Go early</span>
+        <div class="place-type">Neighbourhood Restaurant · Kallio</div>
+        <div class="place-name">Ravintola Oiva</div>
+        <div class="place-desc">A Kallio institution — rough around the edges, warm at heart, and voted one of Helsinki's best lunch spots. The buffet is generous and changes daily: soups, warm mains, a proper salad bar, fresh bread. Weekday lunch is around €12. A beloved neighbourhood place that's been feeding Kallio for 40 years. Unpretentious and completely genuine.</div>
+        <div class="place-detail">📍 Porthaninkatu 5, Kallio</div>
+        <span class="place-tag tag-hidden">Local classic</span>
       </div>
     </div>
 
+    <!-- 3. Fazer Café -->
     <div class="place-card">
       <div class="place-card-img">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80" alt="Café Ekberg" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Fazer Café" onerror="this.style.display='none'">
       </div>
       <div class="place-card-body">
-        <div class="place-type">Grand Café · Since 1852</div>
-        <div class="place-name">Café Ekberg</div>
-        <div class="place-desc">The oldest surviving café in Helsinki, open since 1852. Cake stands, pressed-tin ceilings, the smell of butter and something sweet baking. A place that feels both timeless and completely alive. Order the afternoon smörgåsbord or just a slice of something impossibly good. This is old Helsinki at its finest.</div>
-        <div class="place-detail">📍 Bulevardi 9</div>
-        <span class="place-tag tag-must">Since 1852</span>
+        <div class="place-type">Grand Café · City Centre</div>
+        <div class="place-name">Fazer Café</div>
+        <div class="place-desc">One of the most beautiful cafés in Helsinki, in business since the 19th century. Marble counters, chandeliers, glass cases full of pastries. The open sandwich lunch is excellent — smoked salmon, roast beef, Finnish cheese on dark rye bread. Karl Fazer chocolate is legendary; take a box home. Don't rush. This is a place for lingering.</div>
+        <div class="place-detail">📍 Kluuvikatu 3, City Centre</div>
+        <span class="place-tag tag-must">Grand & Classic</span>
       </div>
     </div>
 
-    <div class="place-card">
-      <div class="place-card-img">
-        <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=800&q=80" alt="Gelato" onerror="this.style.display='none'">
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Coffee & Gelato · City Centre</div>
-        <div class="place-name">Robert's Coffee Gelato Factory</div>
-        <div class="place-desc">A Finnish family-run café that does something unusual well: exceptional coffee alongside proper Italian-style gelato with Nordic twists — rhubarb, cloudberry, salted liquorice. The Gelato Factory on Aleksanterinkatu has the full spinning gelato bar. A brilliant afternoon stop, especially after a long walk around Senate Square.</div>
-        <div class="place-detail">📍 Aleksanterinkatu 21</div>
-        <span class="place-tag tag-food">Coffee + Gelato</span>
-      </div>
-    </div>
-
+    <!-- 4. Coming soon -->
     <div class="place-card">
       <div class="place-card-img">
         <div class="coming-soon-overlay">
@@ -257,13 +248,14 @@
         </div>
       </div>
       <div class="place-card-body">
-        <div class="place-type">Café · Helsinki</div>
+        <div class="place-type">Restaurant · Helsinki</div>
         <div class="place-name">To be announced</div>
-        <div class="place-desc">A new spot is being added here. Check back as June approaches — there is always one more good café waiting to be discovered in this city.</div>
+        <div class="place-desc">A fourth lunch spot is being added. Check back as June approaches — the list keeps growing as research continues.</div>
         <span class="place-tag tag-soon">Coming Soon</span>
       </div>
     </div>
 
+    <!-- 5. Coming soon -->
     <div class="place-card">
       <div class="place-card-img">
         <div class="coming-soon-overlay">
@@ -272,9 +264,25 @@
         </div>
       </div>
       <div class="place-card-body">
-        <div class="place-type">Café · Helsinki</div>
+        <div class="place-type">Restaurant · Helsinki</div>
         <div class="place-name">To be announced</div>
-        <div class="place-desc">Another favourite is being added. This page keeps growing as the trip gets closer. Every good city has more cafés than you can visit in three days.</div>
+        <div class="place-desc">Another favourite is being added here. Helsinki has no shortage of good lunch options and this page will reflect that.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <!-- 6. Coming soon -->
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">Restaurant · Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">One more to come. The full six will be in place before June. Each one chosen with care and with you in mind.</div>
         <span class="place-tag tag-soon">Coming Soon</span>
       </div>
     </div>
@@ -283,8 +291,8 @@
 </div>
 
 <div class="nav-bottom">
-  <a href="index.html" class="nav-bottom-link">← Back to Guide</a>
-  <a href="lunch.html" class="nav-bottom-link">Lunch →</a>
+  <a href="cafes.html" class="nav-bottom-link">← Cafés</a>
+  <a href="dinner.html" class="nav-bottom-link">Dinner →</a>
 </div>
 
 <footer>

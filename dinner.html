@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cafés · Helsinki Guide</title>
+<title>Dinner · Helsinki Guide</title>
 <link rel="stylesheet" href="shared.css">
 <style>
   .food-subnav {
@@ -13,7 +13,6 @@
     display: flex;
     align-items: center;
     height: 48px;
-    gap: 0;
   }
   .food-subnav-label {
     font-size: 9px;
@@ -119,11 +118,7 @@
     font-weight: 300;
     flex: 1;
   }
-  .place-detail {
-    margin-top: 12px;
-    font-size: 11px;
-    color: #A09880;
-  }
+  .place-detail { margin-top: 12px; font-size: 11px; color: #A09880; }
   .place-tag {
     display: inline-block;
     margin-top: 14px;
@@ -134,6 +129,7 @@
     align-self: flex-start;
   }
   .tag-must { background: #F8EAF0; color: #C45C78; border: 1px solid #E8C0CC; }
+  .tag-hidden { background: #EAF3E8; color: #5A8054; border: 1px solid #C8DCC4; }
   .tag-anna { background: #E8F0F8; color: var(--teal); border: 1px solid #B8D0E0; }
   .tag-food { background: #F5F0E8; color: #8A7040; border: 1px solid #D8C89C; }
   .tag-soon { background: #F0EDE4; color: #8A7A60; border: 1px solid #D8D0BC; }
@@ -162,93 +158,60 @@
 
 <div class="food-subnav">
   <div class="food-subnav-label">Food &amp; Drink</div>
-  <a href="cafes.html" class="food-tab active"><span class="food-tab-icon">☕</span>Cafés</a>
+  <a href="cafes.html" class="food-tab"><span class="food-tab-icon">☕</span>Cafés</a>
   <a href="lunch.html" class="food-tab"><span class="food-tab-icon">🥗</span>Lunch</a>
-  <a href="dinner.html" class="food-tab"><span class="food-tab-icon">🍽️</span>Dinner</a>
+  <a href="dinner.html" class="food-tab active"><span class="food-tab-icon">🍽️</span>Dinner</a>
 </div>
 
-<div class="page-hero" style="background: #4A3820;">
-  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=80" alt="Helsinki café" onerror="this.style.display='none'">
-  <div class="page-hero-gradient"></div>
+<div class="page-hero" style="background: #2C2820;">
+  <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80" alt="Helsinki dinner" onerror="this.style.display='none'">
+  <div class="page-hero-gradient" style="background: linear-gradient(to bottom, rgba(44,40,32,0.2) 0%, rgba(44,40,32,0) 30%, rgba(44,40,32,0.75) 100%);"></div>
   <div class="page-hero-content">
-    <div class="page-breadcrumb"><a href="index.html">Guide</a> · Food · <strong>Cafés</strong></div>
-    <div class="page-hero-title">Helsinki <em>Cafés</em></div>
-    <div class="page-hero-sub">☕ · Slow mornings · From Japanese sandos to century-old patisseries</div>
+    <div class="page-breadcrumb"><a href="index.html">Guide</a> · Food · <strong>Dinner</strong></div>
+    <div class="page-hero-title">Helsinki <em>Dinner</em></div>
+    <div class="page-hero-sub">🍽️ · Evenings · From Japanese izakayas to Nordic classics</div>
   </div>
 </div>
 
 <div class="page-intro">
-  <div class="section-eyebrow">Slow mornings</div>
-  <div class="page-intro-title">Helsinki takes its<br><em>coffee seriously.</em></div>
-  <p class="intro-body">Finland drinks more coffee per capita than almost any country on earth, and Helsinki is where that culture peaks. The café scene moves between worlds: Japanese-inspired sando spots, grand old patisseries open since the 1800s, and specialty roasters treating single origins like fine wine.</p>
-  <p class="intro-body">Start the morning slowly. A cardamom bun or a fluffy fruit sando somewhere sunlit. This is not a city that rushes its mornings, and neither should you.</p>
+  <div class="section-eyebrow">Evenings</div>
+  <div class="page-intro-title">Helsinki nights<br>are long in <em>June.</em></div>
+  <p class="intro-body">
+    In Juhannus week the sun barely sets — which means dinner at 8pm still feels like late afternoon, and the city stays warm and awake late into the night. Helsinki's evening restaurant scene has grown into something genuinely special: Japanese bars, Nordic bistros, neighbourhood gems in Kallio and Punavuori.
+  </p>
+  <p class="intro-body">
+    These are the places worth sitting down for when the long day finally winds down.
+  </p>
 </div>
 
 <div class="cards-section">
   <div class="cards-header">
-    <div class="section-eyebrow">Where to go</div>
-    <div class="section-title-lg">Six <em>cafés</em></div>
+    <div class="section-eyebrow">Where to eat</div>
+    <div class="section-title-lg">Six <em>dinner spots</em></div>
   </div>
 
   <div class="tip-box">
     <div class="tip-box-eyebrow">✦ Curator's note</div>
-    <div class="tip-box-text">"If you see a queue outside Café Tampopo, join it. And get a korvapuusti — the Finnish cardamom bun — at least once. One will not be enough."</div>
+    <div class="tip-box-text">"Sake Bar & Izakaya and Café Tampopo are sister restaurants — consider doing Tampopo for a late lunch and Sake Bar for dinner the same day. The full experience."</div>
   </div>
 
   <div class="cards-grid">
 
+    <!-- 1. Sake Bar & Izakaya -->
     <div class="place-card">
       <div class="place-card-img">
-        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800&q=80" alt="Café Tampopo sando" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=800&q=80" alt="Sake Bar Izakaya" onerror="this.style.display='none'">
       </div>
       <div class="place-card-body">
-        <div class="place-type">Japanese Café · Kamppi</div>
-        <div class="place-name">Café Tampopo</div>
-        <div class="place-desc">A tiny Japanese-inspired café next to Cinema Orion, serving sando sandwiches on cloud-light shokupan bread — chicken katsu, tamago, seasonal fruit. Matcha lattes with bear latte art, Hojicha, Swiss rolls, Purin pudding. Jazz records playing in the background. Almost always has a queue outside. Every minute is worth it.</div>
-        <div class="place-detail">📍 Eerikinkatu 15–17</div>
-        <span class="place-tag tag-must">Must Visit</span>
+        <div class="place-type">Japanese Bar · Kruununhaka</div>
+        <div class="place-name">Sake Bar &amp; Izakaya</div>
+        <div class="place-desc">The older sister of Café Tampopo — a small, intimate spot in Kruununhaka dedicated to artisanal Japanese sake and the small, exquisite bar foods that pair perfectly with it. Open Tuesday to Sunday from 5pm. Moody, welcoming, the kind of place where you order one thing and then keep ordering. Rice is life.</div>
+        <div class="place-detail">📍 Kruununhaka · Open Tue–Sun from 17:00</div>
+        <span class="place-tag tag-must">Must Book</span>
       </div>
     </div>
 
-    <div class="place-card">
-      <div class="place-card-img">
-        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80" alt="Layers Bakery croissants" onerror="this.style.display='none'">
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Artisan Bakery · Töölö & Punavuori</div>
-        <div class="place-name">Layers Bakery</div>
-        <div class="place-desc">Probably the best croissants in Finland. A tiny bakery run by Finnish-Spanish baker Daniel Tobal Autiokari — room for two people inside, a queue on the pavement. The pain au chocolat has perfect structure: light, buttery, crunchy outside, soft within. Go early on weekends. They're sold out by 11am.</div>
-        <div class="place-detail">📍 Cygneauksenkatu 6 · also Bulevardi 15</div>
-        <span class="place-tag tag-anna">Go early</span>
-      </div>
-    </div>
-
-    <div class="place-card">
-      <div class="place-card-img">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80" alt="Café Ekberg" onerror="this.style.display='none'">
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Grand Café · Since 1852</div>
-        <div class="place-name">Café Ekberg</div>
-        <div class="place-desc">The oldest surviving café in Helsinki, open since 1852. Cake stands, pressed-tin ceilings, the smell of butter and something sweet baking. A place that feels both timeless and completely alive. Order the afternoon smörgåsbord or just a slice of something impossibly good. This is old Helsinki at its finest.</div>
-        <div class="place-detail">📍 Bulevardi 9</div>
-        <span class="place-tag tag-must">Since 1852</span>
-      </div>
-    </div>
-
-    <div class="place-card">
-      <div class="place-card-img">
-        <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=800&q=80" alt="Gelato" onerror="this.style.display='none'">
-      </div>
-      <div class="place-card-body">
-        <div class="place-type">Coffee & Gelato · City Centre</div>
-        <div class="place-name">Robert's Coffee Gelato Factory</div>
-        <div class="place-desc">A Finnish family-run café that does something unusual well: exceptional coffee alongside proper Italian-style gelato with Nordic twists — rhubarb, cloudberry, salted liquorice. The Gelato Factory on Aleksanterinkatu has the full spinning gelato bar. A brilliant afternoon stop, especially after a long walk around Senate Square.</div>
-        <div class="place-detail">📍 Aleksanterinkatu 21</div>
-        <span class="place-tag tag-food">Coffee + Gelato</span>
-      </div>
-    </div>
-
+    <!-- 2–6. Coming soon -->
     <div class="place-card">
       <div class="place-card-img">
         <div class="coming-soon-overlay">
@@ -257,9 +220,9 @@
         </div>
       </div>
       <div class="place-card-body">
-        <div class="place-type">Café · Helsinki</div>
+        <div class="place-type">Restaurant · Helsinki</div>
         <div class="place-name">To be announced</div>
-        <div class="place-desc">A new spot is being added here. Check back as June approaches — there is always one more good café waiting to be discovered in this city.</div>
+        <div class="place-desc">A second dinner spot is being added here. Helsinki's evening dining scene is full of good options and this page will grow before June.</div>
         <span class="place-tag tag-soon">Coming Soon</span>
       </div>
     </div>
@@ -272,9 +235,54 @@
         </div>
       </div>
       <div class="place-card-body">
-        <div class="place-type">Café · Helsinki</div>
+        <div class="place-type">Restaurant · Helsinki</div>
         <div class="place-name">To be announced</div>
-        <div class="place-desc">Another favourite is being added. This page keeps growing as the trip gets closer. Every good city has more cafés than you can visit in three days.</div>
+        <div class="place-desc">A third dinner spot. Check back — more to come as the trip gets closer and the itinerary takes shape.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">Restaurant · Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">More to come. Each dinner pick on this page is chosen with the long, golden June evenings in mind.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">Restaurant · Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">A fifth spot is planned. Helsinki has neighbourhoods full of good evening restaurants — Kallio, Punavuori, Kruununhaka — and this list will reflect that.</div>
+        <span class="place-tag tag-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-card-img">
+        <div class="coming-soon-overlay">
+          <div class="coming-soon-text">Coming soon</div>
+          <div class="coming-soon-sub">More to be revealed</div>
+        </div>
+      </div>
+      <div class="place-card-body">
+        <div class="place-type">Restaurant · Helsinki</div>
+        <div class="place-name">To be announced</div>
+        <div class="place-desc">The final dinner pick. All six will be confirmed before June. Each one a place worth the walk and worth the evening.</div>
         <span class="place-tag tag-soon">Coming Soon</span>
       </div>
     </div>
@@ -283,8 +291,8 @@
 </div>
 
 <div class="nav-bottom">
-  <a href="index.html" class="nav-bottom-link">← Back to Guide</a>
-  <a href="lunch.html" class="nav-bottom-link">Lunch →</a>
+  <a href="lunch.html" class="nav-bottom-link">← Lunch</a>
+  <a href="index.html" class="nav-bottom-link">Back to Guide →</a>
 </div>
 
 <footer>
