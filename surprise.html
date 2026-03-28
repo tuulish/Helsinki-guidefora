@@ -93,23 +93,23 @@
     margin-bottom: 32px;
     animation: fadeUp 0.8s ease 1.2s both;
   }
-  .bday-btn {
-    display: inline-block;
-    background: #C45C78;
-    color: #F7F3EC;
-    border: none;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    padding: 14px 40px;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-family: 'DM Sans', sans-serif;
-    animation: fadeUp 0.8s ease 1.3s both;
-  }
-  .bday-btn:hover { background: #A84864; }
-
+ .bday-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: #C45C78;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  clip-path: path('M32 56 C32 56 4 38 4 20 C4 10 12 4 20 4 C25 4 30 7 32 11 C34 7 39 4 44 4 C52 4 60 10 60 20 C60 38 32 56 32 56Z');
+  animation: fadeUp 0.8s ease 1.3s both;
+}
+.bday-btn:hover {
+  background: #A84864;
+  transform: scale(1.1);
+}
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
@@ -343,13 +343,13 @@
       <text x="138" y="110" font-size="8" fill="#C45C78" opacity="0.5">✦</text>
     </svg>
 
-    <div class="bday-eyebrow">✦ For you, Anna</div>
+    <div class="bday-eyebrow">✦ Paljon Onnea, Anna</div>
     <div class="bday-title">Happy Birthday!</div>
     <div class="bday-sub">
       Wishing you the most beautiful Juhannus in Helsinki.<br>
-      This guide was made with you in mind — every single page.
+      Toivotavasti sinulla on ihana aika Suomessa.
     </div>
-    <button class="bday-btn" onclick="closeBirthday()">Open your guide →</button>
+    <button class="bday-btn" onclick="closeBirthday()" aria-label="Open your guide"></button>
   </div>
 </div>
 
